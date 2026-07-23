@@ -1,181 +1,918 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Natnael Aklilu — Computer Science Student &amp; Builder</title>
-<meta name="description" content="Portfolio of Natnael Aklilu, a Computer Science student at Wolaita Sodo University focused on network security, web development, and building tech ventures in Ethiopia.">
-<meta property="og:title" content="Natnael Aklilu — Computer Science Student & Builder">
-<meta property="og:description" content="CS student at Wolaita Sodo University. Network security, web development, and tech ventures in Ethiopia.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#0a0d12">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call me Natty!</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="icon" href="Icon.png">
+
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Orbitron"', 'sans-serif'],
+                        sans: ['"Rajdhani"', 'sans-serif'],
+                        mono: ['"Rajdhani"', 'monospace'],
+                    },
+                    colors: {
+                        'neon-blue': '#00f3ff',
+                        'neon-pink': '#ff00ff',
+                        'neon-green': '#0aff0a',
+                        'neon-purple': '#bc13fe',
+                        'tech-silver': '#a0a0a0',
+                        'charcoal': '#050505',
+                        'glass': 'rgba(255, 255, 255, 0.03)',
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 15s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #0a0a0e;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background-color: #00f3ff;
+            color: #000;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Custom Scrollbar - Neon */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020202;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f3ff;
+        }
+
+        /* Scanlines - Very subtle now */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0.02));
+            background-size: 100% 3px;
+            opacity: 0.3;
+        }
+
+        .glass-panel {
+            background: rgba(20, 20, 25, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hidden-custom {
+            display: none !important;
+        }
+    </style>
+
 </head>
+
 <body>
-<a href="#main" class="skip-link">Skip to content</a>
+    <!-- Scanlines Overlay -->
+    <div class="scanlines"></div>
 
-<svg class="icon-sprite" aria-hidden="true">
-  <symbol id="icon-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
-  <symbol id="icon-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
-  <symbol id="icon-chevron-down" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
-  <symbol id="icon-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
-  <symbol id="icon-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="7 9 10 12 7 15"/><line x1="12" y1="15" x2="16" y2="15"/></symbol>
-  <symbol id="icon-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="5"/><line x1="15" y1="2" x2="15" y2="5"/><line x1="9" y1="19" x2="9" y2="22"/><line x1="15" y1="19" x2="15" y2="22"/><line x1="2" y1="9" x2="5" y2="9"/><line x1="2" y1="15" x2="5" y2="15"/><line x1="19" y1="9" x2="22" y2="9"/><line x1="19" y1="15" x2="22" y2="15"/></symbol>
-  <symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/></symbol>
-  <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 2 L20 5 L20 11 C20 16.5 16.5 20.5 12 22 C7.5 20.5 4 16.5 4 11 L4 5 Z"/></symbol>
-  <symbol id="icon-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></symbol>
-  <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
-  <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></symbol>
-  <symbol id="icon-send" viewBox="0 0 24 24"><path d="M22 2 L11 13"/><path d="M22 2 L15 22 L11 13 L2 9 Z"/></symbol>
-  <symbol id="icon-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
-  <symbol id="icon-message" viewBox="0 0 24 24"><path d="M4 4h16v12H8l-4 4Z"/></symbol>
-  <symbol id="icon-code" viewBox="0 0 24 24"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/></symbol>
-</svg>
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
 
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
-
-<nav id="navbar" class="navbar">
-  <div class="nav-inner">
-    <a href="#home" class="nav-logo">
-      <span class="nav-logo-mark"><svg class="icon"><use href="#icon-terminal"></use></svg></span>
-      <span class="nav-logo-text">
-        <span class="nav-logo-name" id="nav-logo-name"></span>
-        <span class="nav-logo-handle" id="nav-logo-handle"></span>
-      </span>
-    </a>
-    <div class="nav-links" id="nav-links"></div>
-    <button class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Open menu" aria-expanded="false">
-      <svg class="icon"><use href="#icon-menu"></use></svg>
-    </button>
-  </div>
-  <div class="nav-mobile-menu" id="nav-mobile-menu"></div>
-</nav>
-
-<main id="main">
-  <section id="home" class="hero">
-    <div class="hero-inner">
-      <div class="hero-portrait-wrap">
-        <img id="hero-portrait" class="hero-portrait-img" alt="">
-      </div>
-      <p class="hero-status"><span class="status-dot" aria-hidden="true"></span><span id="hero-status-text"></span></p>
-      <p class="hero-eyebrow" id="hero-eyebrow"></p>
-      <h1 class="hero-heading" id="hero-heading"></h1>
-      <p class="hero-phrase-wrap"><span id="hero-phrase" class="hero-phrase"></span><span class="hero-cursor" aria-hidden="true"></span></p>
-      <div class="hero-actions" id="hero-actions"></div>
+    <!-- Ambient Lights -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-blue-900/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-purple-900/20 rounded-full blur-[120px] pointer-events-none z-0">
     </div>
-    <a href="#about" class="hero-scroll-hint">
-      <span>Scroll</span>
-      <svg class="icon icon-bounce"><use href="#icon-chevron-down"></use></svg>
-    </a>
-  </section>
 
-  <section id="about" class="section">
-    <div class="section-inner" data-reveal>
-      <div class="section-header section-header--center">
-        <p class="section-kicker" id="about-kicker"></p>
-        <h2 class="section-heading" id="about-heading"></h2>
-      </div>
-      <div class="about-bio" id="about-bio"></div>
-      <div class="values-grid" id="about-values"></div>
-    </div>
-  </section>
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <div id="nav-container"
+                class="relative backdrop-blur-md border border-white/5 bg-black/80 px-6 py-3 flex justify-between items-center rounded-sm">
 
-  <section id="skills" class="section section--alt">
-    <div class="section-inner" data-reveal>
-      <div class="section-header">
-        <p class="section-kicker" id="skills-kicker"></p>
-        <h2 class="section-heading" id="skills-heading"></h2>
-      </div>
-      <div class="skills-grid" id="skills-grid"></div>
-    </div>
-  </section>
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-3 group z-20">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center bg-black border border-gray-800 group-hover:border-neon-blue transition-colors rounded-sm">
+                        <i data-lucide="terminal" class="text-neon-blue w-5 h-5"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-white font-display font-bold tracking-wider text-lg">NATNAEL</span>
+                        <span class="text-[10px] text-gray-500 font-mono tracking-[0.3em]">AKLILU</span>
+                    </div>
+                </a>
 
-  <section id="projects" class="section">
-    <div class="section-inner" data-reveal>
-      <div class="section-header section-header--split">
-        <div>
-          <p class="section-kicker" id="projects-kicker"></p>
-          <h2 class="section-heading" id="projects-heading"></h2>
-          <p class="section-sub" id="projects-sub"></p>
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-1">
+                    <a href="#home"
+                        class="relative px-5 py-2 text-sm font-sans font-medium text-gray-400 hover:text-white transition-colors group">
+                        Home
+                        <div
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-neon-blue group-hover:w-1/2 transition-all duration-300">
+                        </div>
+                    </a>
+                    <a href="#about"
+                        class="relative px-5 py-2 text-sm font-sans font-medium text-gray-400 hover:text-white transition-colors group">
+                        About
+                        <div
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-neon-blue group-hover:w-1/2 transition-all duration-300">
+                        </div>
+                    </a>
+                    <a href="#projects"
+                        class="relative px-5 py-2 text-sm font-sans font-medium text-gray-400 hover:text-white transition-colors group">
+                        Projects
+                        <div
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-neon-blue group-hover:w-1/2 transition-all duration-300">
+                        </div>
+                    </a>
+                    <a href="#blog"
+                        class="relative px-5 py-2 text-sm font-sans font-medium text-gray-400 hover:text-white transition-colors group">
+                        Blog
+                        <div
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-neon-blue group-hover:w-1/2 transition-all duration-300">
+                        </div>
+                    </a>
+                    <a href="#contact"
+                        class="relative px-5 py-2 text-sm font-sans font-medium text-gray-400 hover:text-white transition-colors group">
+                        Contact
+                        <div
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-neon-blue group-hover:w-1/2 transition-all duration-300">
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <button id="mobile-menu-btn" class="md:hidden text-white z-20 p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+
+                <!-- Mobile Menu Overlay -->
+                <div id="mobile-menu"
+                    class="hidden absolute top-full left-0 w-full bg-black/95 border-b border-gray-800 p-4 flex-col gap-2 shadow-2xl animate-in slide-in-from-top-5">
+                    <a href="#home"
+                        class="mobile-link block w-full p-3 text-center font-display font-medium text-white border-b border-gray-800 hover:text-neon-blue transition-colors">Home</a>
+                    <a href="#about"
+                        class="mobile-link block w-full p-3 text-center font-display font-medium text-white border-b border-gray-800 hover:text-neon-blue transition-colors">About</a>
+                    <a href="#projects"
+                        class="mobile-link block w-full p-3 text-center font-display font-medium text-white border-b border-gray-800 hover:text-neon-blue transition-colors">Projects</a>
+                    <a href="#blog"
+                        class="mobile-link block w-full p-3 text-center font-display font-medium text-white border-b border-gray-800 hover:text-neon-blue transition-colors">Blog</a>
+                    <a href="#contact"
+                        class="mobile-link block w-full p-3 text-center font-display font-medium text-white border-b border-gray-800 hover:text-neon-blue transition-colors">Contact</a>
+                </div>
+            </div>
         </div>
-        <div class="project-filters" id="project-filters"></div>
-      </div>
-      <div class="projects-grid" id="projects-grid"></div>
-    </div>
-  </section>
+    </nav>
 
-  <section id="blog" class="section section--alt" hidden>
-    <div class="section-inner" data-reveal>
-      <div class="section-header">
-        <p class="section-kicker">Writing</p>
-        <h2 class="section-heading">Latest Posts</h2>
-      </div>
-      <div class="blog-grid" id="blog-grid"></div>
-    </div>
-  </section>
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section id="home"
+            class="min-h-screen flex flex-col justify-center items-center relative px-4 pt-20 overflow-hidden">
+            <!-- Subtle Background Elements -->
+            <div
+                class="absolute top-1/3 left-10 w-px h-32 bg-gradient-to-b from-transparent via-gray-800 to-transparent hidden lg:block">
+            </div>
+            <div class="absolute bottom-1/4 right-10 w-32 h-32 border border-gray-800/50 rounded-full hidden lg:block">
+            </div>
 
-  <section id="community" class="section">
-    <div class="section-inner section-inner--narrow" data-reveal>
-      <div class="community-card">
-        <svg class="icon icon-lg"><use href="#icon-message"></use></svg>
-        <h2 class="community-heading" id="community-heading"></h2>
-        <p class="community-text" id="community-text"></p>
-        <a class="btn btn-primary" id="community-cta" href="#"></a>
-      </div>
-    </div>
-  </section>
+            <div class="z-10 text-center max-w-5xl mx-auto relative">
+                <!-- Professional Portrait -->
+                <div class="relative w-40 h-40 md:w-48 md:h-48 mx-auto mb-10">
+                    <div
+                        class="w-full h-full rounded-full overflow-hidden border-4 border-gray-900 shadow-2xl relative z-10 bg-gray-800">
+                        <img src="portrait.jpg" alt="Natnael Aklilu"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                    </div>
+                    <!-- Subtle Glow behind -->
+                    <div class="absolute inset-0 bg-neon-blue/20 rounded-full blur-xl -z-10 scale-110"></div>
+                </div>
 
-  <section id="faith" class="section section--alt">
-    <div class="section-inner section-inner--narrow" data-reveal>
-      <p class="section-kicker section-kicker--center" id="faith-kicker"></p>
-      <div class="faith-card">
-        <blockquote class="faith-quote" id="faith-verse"></blockquote>
-        <p class="faith-reference" id="faith-reference"></p>
-        <p class="faith-statement" id="faith-statement"></p>
-      </div>
-    </div>
-  </section>
+                <!-- Intro Text -->
+                <div class="mb-4 flex justify-center items-center gap-3 opacity-80">
+                    <div class="h-px w-8 bg-neon-blue"></div>
+                    <h2 class="text-neon-blue font-mono text-sm tracking-widest uppercase font-semibold">
+                        Future Computer Science Student & Entrepreneur
+                    </h2>
+                    <div class="h-px w-8 bg-neon-blue"></div>
+                </div>
 
-  <section id="terminal-section" class="section">
-    <div class="section-inner section-inner--narrow" data-reveal>
-      <div class="section-header section-header--center">
-        <p class="section-kicker">Try It</p>
-        <h2 class="section-heading">Interactive Terminal</h2>
-      </div>
-      <div class="terminal-window">
-        <div class="terminal-header"><span id="terminal-label"></span></div>
-        <div class="terminal-output" id="terminal-output" role="log" aria-live="polite"></div>
-        <div class="terminal-input-row">
-          <span class="terminal-prompt" id="terminal-prompt"></span>
-          <label for="terminal-input" class="sr-only">Terminal command input</label>
-          <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 tracking-tight">
+                    I'M NATNAEL
+                </h1>
+
+                <div class="h-16 mb-8">
+                    <p class="text-lg md:text-2xl font-sans font-light text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                        <span id="typewriter-text"></span><span
+                            class="animate-pulse inline-block w-0.5 h-6 align-middle bg-neon-blue ml-1"></span>
+                    </p>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <a href="#projects"
+                        class="px-8 py-3 bg-white text-black font-sans font-bold hover:bg-neon-blue transition-colors rounded-sm">
+                        View Portfolio
+                    </a>
+                    <a href="#contact"
+                        class="px-8 py-3 border border-gray-700 text-white font-sans font-bold hover:border-white transition-colors rounded-sm flex items-center gap-2">
+                        Contact Me <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <a href="#about"
+                class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
+                <span class="text-[10px] font-mono text-gray-400 tracking-widest uppercase">Scroll Down</span>
+                <i data-lucide="chevron-down" class="text-neon-blue animate-bounce w-5 h-5"></i>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 px-4 max-w-5xl mx-auto scroll-mt-20 relative">
+            <div class="flex flex-col items-center text-center space-y-12">
+                <!-- Header -->
+                <div>
+                    <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-4">
+                        Who I <span class="text-neon-blue">Am</span>
+                    </h2>
+                    <div class="h-1 w-24 bg-neon-blue mx-auto rounded-full"></div>
+                </div>
+
+                <!-- Bio Card -->
+                <div
+                    class="glass-panel p-8 md:p-12 rounded-sm border border-white/10 shadow-2xl backdrop-blur-xl bg-white/5 max-w-4xl">
+                    <p class="text-gray-200 font-sans text-xl leading-relaxed mb-6">
+                        I’m <strong class="text-white font-bold">Natnael Aklilu</strong>, a first-year student at Wolaita Sodo University prepping for a major in Computer Science. 
+                        Right now, I'm diving into the basics of network defense and learning how to build secure platforms for local businesses.
+                    </p>
+                    <p class="text-gray-300 font-sans text-lg leading-relaxed mb-8">
+                        My ambition is to start tech ventures that provide real security and value within Ethiopia’s growing digital scene.
+                        To me, writing code is only half the battle; the real challenge is figuring out how to protect data and keep systems safe from exploits.
+                        I'm actively pursuing global scholarships to learn advanced security infrastructure and help build up our country's technical future.
+                    </p>
+                    <div class="pt-6 border-t border-white/10">
+                        <p class="text-md font-mono text-neon-blue italic">
+                            "My background keeps me humble, my curiosity keeps me moving, and my faith keeps me
+                            grounded."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Core Values -->
+                <div class="grid sm:grid-cols-3 gap-6 w-full">
+                    <!-- Value 1 -->
+                    <div
+                        class="p-6 border border-white/10 bg-white/5 rounded-sm hover:bg-white/10 hover:border-neon-blue transition-all duration-300 group cursor-default">
+                        <div
+                            class="text-gray-400 group-hover:text-neon-blue mb-4 flex justify-center transition-colors">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-sans font-bold text-white text-xl mb-2">Curiosity</h4>
+                        <p class="text-sm font-mono text-gray-500 uppercase tracking-wider">Constant Learning</p>
+                    </div>
+                    <!-- Value 2 -->
+                    <div
+                        class="p-6 border border-white/10 bg-white/5 rounded-sm hover:bg-white/10 hover:border-neon-blue transition-all duration-300 group cursor-default">
+                        <div
+                            class="text-gray-400 group-hover:text-neon-blue mb-4 flex justify-center transition-colors">
+                            <i data-lucide="globe" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-sans font-bold text-white text-xl mb-2">Impact</h4>
+                        <p class="text-sm font-mono text-gray-500 uppercase tracking-wider">Real Solutions</p>
+                    </div>
+                    <!-- Value 3 -->
+                    <div
+                        class="p-6 border border-white/10 bg-white/5 rounded-sm hover:bg-white/10 hover:border-neon-blue transition-all duration-300 group cursor-default">
+                        <div
+                            class="text-gray-400 group-hover:text-neon-blue mb-4 flex justify-center transition-colors">
+                            <i data-lucide="shield" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-sans font-bold text-white text-xl mb-2">Integrity</h4>
+                        <p class="text-sm font-mono text-gray-500 uppercase tracking-wider">Ethical Work</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 relative overflow-hidden bg-black">
+            <!-- Subtle Grid -->
+            <div
+                class="absolute inset-0 bg-[linear-gradient(rgba(30,30,30,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(30,30,30,0.5)_1px,transparent_1px)] bg-[size:40px_40px] opacity-10 pointer-events-none">
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-800 pb-6">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-2">
+                            Featured <span class="text-neon-blue">Projects</span>
+                        </h2>
+                        <p class="font-sans text-gray-400">A selection of my recent technical work, Using Vibe Coding.
+                        </p>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="project-filters">
+                        <button onclick="filterProjects('ALL', this)"
+                            class="filter-btn active px-5 py-2 text-xs font-bold font-sans tracking-wider uppercase transition-all duration-300 rounded-sm bg-neon-blue text-black">ALL</button>
+                        <button onclick="filterProjects('SYSTEMS', this)"
+                            class="filter-btn px-5 py-2 text-xs font-bold font-sans tracking-wider uppercase transition-all duration-300 rounded-sm bg-gray-900 text-gray-400 hover:bg-gray-800 hover:text-white">SYSTEMS</button>
+                        <button onclick="filterProjects('SECURITY', this)"
+                            class="filter-btn px-5 py-2 text-xs font-bold font-sans tracking-wider uppercase transition-all duration-300 rounded-sm bg-gray-900 text-gray-400 hover:bg-gray-800 hover:text-white">SECURITY</button>
+                        <button onclick="filterProjects('WEB', this)"
+                            class="filter-btn px-5 py-2 text-xs font-bold font-sans tracking-wider uppercase transition-all duration-300 rounded-sm bg-gray-900 text-gray-400 hover:bg-gray-800 hover:text-white">WEB</button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+
+                    <!-- Project 1 -->
+                    <div class="project-card group relative bg-gray-900/30 border border-white/10 p-8 transition-all duration-300 hover:bg-gray-900/50 hover:border-neon-blue/30 flex flex-col h-full rounded-sm"
+                        data-category="SYSTEMS">
+                        <div class="mb-6 flex justify-between items-start">
+                            <div class="p-3 bg-black border border-gray-800 rounded-sm text-neon-blue">
+                                <i data-lucide="folder" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3
+                            class="text-2xl font-display font-bold text-white mb-3 group-hover:text-neon-blue transition-colors">
+                            Restaurant Sync-System
+                        </h3>
+                        <p class="text-gray-400 font-sans text-sm leading-relaxed mb-6 flex-grow">
+                            A centralized command center for businesses. Syncs inventory, sales, and employee data
+                            seamlessly. Designed for scalable cloud ERP integration.
+                        </p>
+                        <div class="mb-8">
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="text-[10px] font-mono text-gray-300 bg-gray-800 px-2 py-1 rounded-sm">Django</span>
+                                <span
+                                    class="text-[10px] font-mono text-gray-300 bg-gray-800 px-2 py-1 rounded-sm">React</span>
+                                <span
+                                    class="text-[10px] font-mono text-gray-300 bg-gray-800 px-2 py-1 rounded-sm">SQLite</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/nattify-x/Restaurant-System"
+                            class="flex items-center gap-2 text-sm font-bold font-sans text-white hover:text-neon-blue transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i> View Source Code
+                        </a>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card group relative bg-gray-900/30 border border-white/10 p-8 transition-all duration-300 hover:bg-gray-900/50 hover:border-neon-blue/30 flex flex-col h-full rounded-sm"
+                        data-category="SECURITY">
+                        <div class="mb-6 flex justify-between items-start">
+                            <div class="p-3 bg-black border border-gray-800 rounded-sm text-neon-blue">
+                                <i data-lucide="lock" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3
+                            class="text-2xl font-display font-bold text-white mb-3 group-hover:text-neon-blue transition-colors">
+                            Gov & Military Ops
+                        </h3>
+                        <p class="text-gray-400 font-sans text-sm leading-relaxed mb-6 flex-grow">
+                            Secure, high-performance logistics and monitoring software. Features military-grade
+                            authentication and encrypted data streams.
+                        </p>
+                        <div class="mb-8">
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="text-[10px] font-mono text-gray-300 bg-gray-800 px-2 py-1 rounded-sm">Encryption</span>
+                                <span
+                                    class="text-[10px] font-mono text-gray-300 bg-gray-800 px-2 py-1 rounded-sm">C++</span>
+                                <span
+                                    class="text-[10px] font-mono text-gray-300 bg-gray-800 px-2 py-1 rounded-sm">Secure
+                                    Auth</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/nattify-x/AION-CORE-Unified-Command"
+                            class="flex items-center gap-2 text-sm font-bold font-sans text-white hover:text-neon-blue transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i> View Source Code
+                        </a>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card group relative bg-gray-900/30 border border-white/10 p-8 transition-all duration-300 hover:bg-gray-900/50 hover:border-neon-blue/30 flex flex-col h-full rounded-sm"
+                        data-category="WEB">
+                        <div class="mb-6 flex justify-between items-start">
+                            <div class="p-3 bg-black border border-gray-800 rounded-sm text-neon-blue">
+                                <i data-lucide="globe" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3
+                            class="text-2xl font-display font-bold text-white mb-3 group-hover:text-neon-blue transition-colors">
+                            Web Solutions
+                        </h3>
+                        <p class="text-gray-400 font-sans text-sm leading-relaxed mb-6 flex-grow">
+                            Full-stack web development services including domain registration, secure hosting, and brand
+                            maintenance.
+                        </p>
+                        <div class="mb-8">
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="text-[10px] font-mono text-gray-300 bg-gray-800 px-2 py-1 rounded-sm">Next.js</span>
+                                <span
+                                    class="text-[10px] font-mono text-gray-300 bg-gray-800 px-2 py-1 rounded-sm">Tailwind</span>
+                                <span
+                                    class="text-[10px] font-mono text-gray-300 bg-gray-800 px-2 py-1 rounded-sm">Node</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/nattify-x/abbapascalcatholicschool.edu.et"
+                            class="flex items-center gap-2 text-sm font-bold font-sans text-white hover:text-neon-blue transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i> View Source Code
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Preview -->
+        <section id="blog" class="py-24 border-t border-gray-800/50 relative">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex items-center justify-between mb-12">
+                    <div>
+                        <h2 class="text-3xl md:text-5xl font-display font-bold text-white">Latest <span
+                                class="text-gray-500">&</span> Insights</h2>
+                        <p class="font-sans text-gray-400 mt-2">Thoughts on technology, development, and future trends.
+                        </p>
+                    </div>
+                    <a href="https://aii.et/Home"
+                        class="hidden md:flex items-center gap-2 text-sm font-sans font-bold text-white border border-gray-700 px-6 py-3 hover:border-neon-blue hover:bg-white/5 transition-colors rounded-sm">
+                        View All <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Article 1 -->
+                    <article
+                        class="border border-white/10 bg-white/5 p-8 hover:border-gray-500 hover:-translate-y-1 transition-all duration-300 group cursor-pointer rounded-sm backdrop-blur-sm">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="text-xs font-mono text-neon-blue">June 2025</span>
+                        </div>
+                        <h3
+                            class="text-xl font-display font-bold text-white mb-3 group-hover:text-neon-blue transition-colors">
+                            Learn and Transcribe ET Language
+                        </h3>
+                        <p class="text-gray-400 text-sm font-sans mb-6 leading-relaxed">
+                            A system that enables learning and automatic transcription of Amharic speech, converting
+                            spoken words into written text efficiently.
+                            <span
+                                class="text-white text-sm font-bold flex items-center gap-2 group-hover:text-neon-blue transition-colors">
+                                Read Article <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </span>
+                    </article>
+                    <!-- Article 2 (Duplicate for design consistency) -->
+                    <article
+                        class="border border-white/10 bg-white/5 p-8 hover:border-gray-500 hover:-translate-y-1 transition-all duration-300 group cursor-pointer rounded-sm backdrop-blur-sm">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="text-xs font-mono text-neon-blue">June 2025</span>
+                        </div>
+                        <h3
+                            class="text-xl font-display font-bold text-white mb-3 group-hover:text-neon-blue transition-colors">
+                            Breast Cancer Detection
+                        </h3>
+                        <p class="text-gray-400 text-sm font-sans mb-6 leading-relaxed">
+                            A system that uses advanced technology to identify signs of breast cancer early, helping in
+                            timely treatment and improved patient outcomes.
+                        </p>
+                        <span
+                            class="text-white text-sm font-bold flex items-center gap-2 group-hover:text-neon-blue transition-colors">
+                            Read Article <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                        </span>
+                    </article>
+                    <!-- Article 3 -->
+                    <article
+                        class="border border-white/10 bg-white/5 p-8 hover:border-gray-500 hover:-translate-y-1 transition-all duration-300 group cursor-pointer rounded-sm backdrop-blur-sm">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="text-xs font-mono text-neon-blue">Sep 2025</span>
+                        </div>
+                        <h3
+                            class="text-xl font-display font-bold text-white mb-3 group-hover:text-neon-blue transition-colors">
+                            Skin Disease Detection
+                        </h3>
+                        <p class="text-gray-400 text-sm font-sans mb-6 leading-relaxed">
+                            Detects skin diseases early using images for timely treatment and better outcomes.
+                        </p>
+                        <span
+                            class="text-white text-sm font-bold flex items-center gap-2 group-hover:text-neon-blue transition-colors">
+                            Read Article <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                        </span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Preview -->
+        <section class="py-24 relative overflow-hidden border-t border-gray-800/50">
+            <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+                <div
+                    class="border border-white/10 bg-gradient-to-b from-white/5 to-black/50 p-12 rounded-sm backdrop-blur-sm shadow-2xl">
+                    <div class="flex justify-center mb-6">
+                        <i data-lucide="message-square" class="text-neon-blue w-10 h-10"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">Join the <span
+                            class="text-neon-blue">Community</span></h2>
+                    <p class="text-gray-300 mb-8 max-w-xl mx-auto font-sans text-lg">
+                        Connect with other developers, share projects, and discuss the future of tech infrastructure in
+                        our Community.
+                    </p>
+                    <a href="https://t.me/Natty_Flow" target="_blank" rel="noreferrer"
+                        class="inline-block px-8 py-3 bg-neon-blue text-black font-sans font-bold uppercase tracking-wider hover:bg-white hover:scale-105 active:scale-95 transition-all duration-300 rounded-sm shadow-lg shadow-neon-blue/20">
+                        Enter Our Community
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faith Section -->
+        <section id="faith" class="py-24 bg-black border-y border-gray-900 relative">
+            <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+                <div class="mb-8">
+                    <h2 class="text-sm font-mono text-gray-500 uppercase tracking-[0.3em]">Foundation & Purpose</h2>
+                </div>
+                <div
+                    class="p-8 md:p-12 border border-gray-800 bg-gradient-to-b from-gray-900/20 to-transparent rounded-sm">
+                    <blockquote class="text-2xl md:text-4xl font-serif italic text-white leading-relaxed mb-8">
+                        “Commit to the Lord whatever you do, and He will establish your plans.”
+                    </blockquote>
+                    <div class="text-neon-blue font-mono text-sm tracking-widest mb-8">
+                        — PROVERBS 16:3 (NLT)
+                    </div>
+                    <div class="w-16 h-px bg-gray-800 mx-auto mb-8"></div>
+                    <p class="text-gray-400 text-lg font-sans leading-relaxed max-w-2xl mx-auto">
+                        Tech is my tool, but faith is my foundation. I believe in building solutions that serve others
+                        with integrity. Every project is an opportunity to create value grounded in truth.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="py-20 px-4 max-w-7xl mx-auto">
+            <div class="flex items-end justify-between mb-8 border-b border-gray-800 pb-4">
+                <h2 class="text-3xl font-display font-bold text-white">VISUAL <span class="text-neon-pink">LOGS</span>
+                </h2>
+                <span class="font-mono text-xs text-gray-600">/// DECRYPTING_IMAGES</span>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Item 1 -->
+                <div
+                    class="group relative aspect-square bg-black border border-gray-800 hover:border-neon-pink transition-all duration-500 overflow-hidden">
+                    <img src="https://picsum.photos/800/800?random=1" alt="Preview S1"
+                        class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-full p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div
+                            class="w-full h-px bg-neon-pink/50 mb-2 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500">
+                        </div>
+                        <span class="text-xs font-mono text-neon-pink font-bold tracking-wider">Preview X0</A></span>
+                    </div>
+                    <div
+                        class="absolute top-2 right-2 w-2 h-2 border-t border-r border-white/20 group-hover:border-neon-pink transition-colors">
+                    </div>
+                    <div
+                        class="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-white/20 group-hover:border-neon-pink transition-colors">
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div
+                    class="group relative aspect-square bg-black border border-gray-800 hover:border-neon-pink transition-all duration-500 overflow-hidden">
+                    <img src="https://picsum.photos/800/800?random=3" alt="CS Algorithms"
+                        class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-full p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div
+                            class="w-full h-px bg-neon-pink/50 mb-2 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500">
+                        </div>
+                        <span class="text-xs font-mono text-neon-pink font-bold tracking-wider">Preview X1</span>
+                    </div>
+                    <div
+                        class="absolute top-2 right-2 w-2 h-2 border-t border-r border-white/20 group-hover:border-neon-pink transition-colors">
+                    </div>
+                    <div
+                        class="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-white/20 group-hover:border-neon-pink transition-colors">
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div
+                    class="group relative aspect-square bg-black border border-gray-800 hover:border-neon-pink transition-all duration-500 overflow-hidden">
+                    <img src="https://picsum.photos/800/800?random=8" alt="Preview S2"
+                        class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-full p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div
+                            class="w-full h-px bg-neon-pink/50 mb-2 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500">
+                        </div>
+                        <span class="text-xs font-mono text-neon-pink font-bold tracking-wider">Preview X2</span>
+                    </div>
+                    <div
+                        class="absolute top-2 right-2 w-2 h-2 border-t border-r border-white/20 group-hover:border-neon-pink transition-colors">
+                    </div>
+                    <div
+                        class="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-white/20 group-hover:border-neon-pink transition-colors">
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div
+                    class="group relative aspect-square bg-black border border-gray-800 hover:border-neon-pink transition-all duration-500 overflow-hidden">
+                    <img src="https://picsum.photos/800/800?random=7" alt="Coding"
+                        class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-full p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div
+                            class="w-full h-px bg-neon-pink/50 mb-2 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500">
+                        </div>
+                        <span class="text-xs font-mono text-neon-pink font-bold tracking-wider">Preview X3 </span>
+                    </div>
+                    <div
+                        class="absolute top-2 right-2 w-2 h-2 border-t border-r border-white/20 group-hover:border-neon-pink transition-colors">
+                    </div>
+                    <div
+                        class="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-white/20 group-hover:border-neon-pink transition-colors">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 relative overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
+                <div class="mb-12">
+                    <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-6">
+                        Get in <span class="text-neon-blue">Touch</span>
+                    </h2>
+                    <p class="font-sans text-gray-300 text-xl leading-relaxed max-w-2xl mx-auto">
+                        I am available for freelance projects, consultation, to be good friends and collaborations.
+                        Let's build something great together.
+                    </p>
+                </div>
+
+                <!-- Simplified Social Links - Only Icons -->
+                <div class="flex flex-wrap justify-center items-center gap-8">
+                    <!-- EMAIL LINK -->
+                    <a href="mailto:natnaelaklilu617@gmail.com"
+                        class="w-20 h-20 flex items-center justify-center rounded-full bg-gray-800 border border-gray-700 text-gray-300 hover:bg-neon-blue hover:border-neon-blue hover:text-black hover:scale-110 active:scale-95 transition-all duration-300 group shadow-lg shadow-black/50"
+                        title="Email Me">
+                        <i data-lucide="mail" class="w-8 h-8"></i>
+                    </a>
+
+                    <!-- TELEGRAM LINK -->
+                    <a href="https://t.me/nattify_x" target="_blank" rel="noreferrer"
+                        class="w-20 h-20 flex items-center justify-center rounded-full bg-gray-800 border border-gray-700 text-gray-300 hover:bg-[#229ED9] hover:border-[#229ED9] hover:text-white hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg shadow-black/50"
+                        title="Telegram">
+                        <i data-lucide="send" class="w-8 h-8"></i>
+                    </a>
+
+                    <!-- GITHUB LINK -->
+                    <a href="https://www.github.com/nattify-x" target="_blank" rel="noreferrer"
+                        class="w-20 h-20 flex items-center justify-center rounded-full bg-gray-800 border border-gray-700 text-gray-300 hover:bg-white hover:border-white hover:text-black hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg shadow-black/50"
+                        title="GitHub">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="w-8 h-8">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+
+
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 text-center border-t border-gray-900/50 bg-black/80 relative z-10 backdrop-blur-md">
+        <div
+            class="flex justify-center items-center gap-2 text-[12px] font-mono text-gray-2000 tracking-widest uppercase">
+            &copy;<span id="year"></span>Natty. Made with care.
         </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <section id="contact" class="section section--alt">
-    <div class="section-inner section-inner--narrow" data-reveal>
-      <h2 class="section-heading section-heading--center" id="contact-heading"></h2>
-      <p class="contact-text" id="contact-text"></p>
-      <div class="contact-links" id="contact-links"></div>
-      <div class="contact-email-row">
-        <span id="contact-email-text"></span>
-        <button id="copy-email-btn" class="copy-email-btn" data-label="Copy" type="button">Copy</button>
-      </div>
-    </div>
-  </section>
-</main>
+    <script>
+        // 1. Initialize Icons
+        lucide.createIcons();
 
-<footer class="footer">
-  <p>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. Made with care.</p>
-</footer>
+        // 2. Set Current Year
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-<script src="content.js"></script>
-<script src="app.js" defer></script>
+        // 3. Navbar Scroll Effect & Mobile Menu
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-2');
+                navContainer.classList.add('shadow-lg', 'shadow-neon-blue/5');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+                navContainer.classList.remove('shadow-lg', 'shadow-neon-blue/5');
+            }
+        });
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+
+        // 4. Hero Typing Effect
+        const textElement = document.getElementById('typewriter-text');
+        const phrase = "Building Tech Solutions with Purpose, Faith, and Vision.";
+        let i = 0;
+
+        function typeWriter() {
+            if (i < phrase.length) {
+                textElement.textContent += phrase.charAt(i);
+                i++;
+                setTimeout(typeWriter, 30);
+            }
+        }
+        typeWriter();
+
+        // 5. Project Filtering Logic
+        function filterProjects(category, btnElement) {
+            // Update Button Styles
+            if (btnElement) {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('bg-neon-blue', 'text-black');
+                    btn.classList.add('bg-gray-900', 'text-gray-400');
+                });
+                btnElement.classList.remove('bg-gray-900', 'text-gray-400');
+                btnElement.classList.add('bg-neon-blue', 'text-black');
+            }
+
+            // Filter Items
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'ALL' || card.dataset.category === category) {
+                    card.classList.remove('hidden-custom');
+                } else {
+                    card.classList.add('hidden-custom');
+                }
+            });
+        }
+
+        // 6. Particle Background Logic
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+        const particleCount = 70;
+        const connectionDistance = 160;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.size = Math.random() * 2 + 0.5;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0) this.x = width;
+                if (this.x > width) this.x = 0;
+                if (this.y < 0) this.y = height;
+                if (this.y > height) this.y = 0;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 243, 255, 0.4)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        function initParticles() {
+            resize();
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Background Gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, height);
+            gradient.addColorStop(0, '#0f1016');
+            gradient.addColorStop(1, '#050505');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            // Connections
+            ctx.strokeStyle = 'rgba(0, 243, 255, 0.08)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            resize();
+            // Re-init particles so they don't bunch up
+        });
+
+        initParticles();
+        animate();
+
+    </script>
 </body>
+
 </html>
